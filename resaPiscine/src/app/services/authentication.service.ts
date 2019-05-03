@@ -17,7 +17,7 @@ export class AuthenticationService {
       password,
     };
     const headers = new HttpHeaders().append('Content-Type', 'application/json');
-    this.http.post(this.baseUrl + '/api/staff/login', body, { headers, observe: 'response' }).subscribe(
+    this.http.post(this.baseUrl + 'staff/login', body, { headers, observe: 'response' }).subscribe(
       (data) => {
         // tslint:disable-next-line:no-string-literal
         if (data.body['token']) {
@@ -25,7 +25,7 @@ export class AuthenticationService {
           localStorage.setItem('token', data.body['token']);
           // tslint:disable-next-line:no-string-literal
           console.log(data.body['token']);
-          this.router.navigate(['sessionconsult']);
+          this.router.navigate(['availability']);
         }
       }
     );

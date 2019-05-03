@@ -1,7 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatListModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule } from '@angular/material';
+import { MatDatepickerModule,
+  MatListModule,
+  MatToolbarModule,
+  MatButtonModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatNativeDateModule,
+  MatInputModule} from '@angular/material';
+import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import { LayoutModule } from '@angular/cdk/layout';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [],
@@ -12,7 +23,13 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatMomentDateModule,
+    MatInputModule
   ],
   exports: [
     CommonModule,
@@ -21,7 +38,13 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatMomentDateModule,
+    MatInputModule
   ]
 })
 export class CustomMaterialModule { }

@@ -32,21 +32,4 @@ export class LoginComponent   {
     this.authService.login(this.loginForm.value.username, this.loginForm.value.password);
 
   }
-
-  public login(username: string, password: string) {
-    const body = {
-      email: username,
-      password,
-    };
-    const headers = new HttpHeaders().append('Content-Type', 'application/json');
-    this.http.post(this.baseUrl + '/staff/login', body, { headers, observe: 'response' }).subscribe(
-      (data) => {
-        if (data.body.token) {
-          localStorage.setItem('token', data.body.token);
-          console.log(data.body.token);
-          this.router.navigate(['sessionconsult']);
-        }
-      }
-    );
-  }
 }

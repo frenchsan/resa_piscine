@@ -1,0 +1,51 @@
+
+  <app-created-availability></app-created-availability>
+
+
+
+  <form #f="ngForm" (ngSubmit)="submitAvailabitityCreation(f.form)">
+    <mat-card>
+      <mat-card-header>
+        Creer une reservation
+      </mat-card-header>
+      <mat-card-content>
+          <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="Choose a date" name="startDate"  ngModel>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        <input matInput
+        placeholder="nombre d'équipes à engager"
+        name="nbrEquipe"
+        ngModel
+        #nameField="ngModel" >
+
+        <input matInput
+        placeholder="heure début"
+        name="heuredebut"
+        ngModel
+        #nameField="ngModel" >
+
+        <input matInput
+        placeholder="minute début"
+        name="minutedebut"
+        ngModel
+        #nameField="ngModel" >
+
+        <input matInput
+        placeholder="durée de la partie"
+        name="gameTotalDuration"
+        ngModel
+        #nameField="ngModel" >
+
+
+      </mat-card-content>
+      <mat-card-footer>
+        <button mat-raised-button color="primary" [disabled]="!f.valid">valider</button>
+      </mat-card-footer>
+    </mat-card>
+
+  </form>
+
+
+
