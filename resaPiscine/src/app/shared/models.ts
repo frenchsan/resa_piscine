@@ -1,3 +1,15 @@
+export interface Plannning {
+  id_availability: number;
+  hour_start: string;
+  hour_end: string;
+  is_free: boolean;
+}
+
+export interface RootPlanning {
+  message: Plannning[];
+  returnCode: number;
+}
+
 export interface SessionOuverteRoot {
   message: SessionOuverte[];
   returnCode: number;

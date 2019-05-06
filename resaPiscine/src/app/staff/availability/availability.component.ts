@@ -22,14 +22,17 @@ export class AvailabilityComponent implements OnInit {
     const fin = debut.clone();
     const final = fin.add( form.value.gameTotalDuration, 'minutes');
 
-    const availability = {
-      room_id : 1,
-      startDateTime : moment(debut).format('YYYY-MM-DD HH:mm:ss'),
-      endDateTime :  moment(final).format('YYYY-MM-DD HH:mm:ss'),
-      gameTotalDuration : +form.value.gameTotalDuration
-    };
-    console.log( availability);
-    this.adminService.createAvailability(availability);
+    for (let index = 0; index < form.value.nbrEquipe; index++) {
+      const availability = {
+        room_id : index + 1,
+        startDateTime : moment(debut).format('YYYY-MM-DD HH:mm:ss'),
+        endDateTime :  moment(final).format('YYYY-MM-DD HH:mm:ss'),
+        gameTotalDuration : +form.value.gameTotalDuration
+      };
+      console.log( availability);
+      this.adminService.createAvailability(availability);
+    }
+
   }
 
 }

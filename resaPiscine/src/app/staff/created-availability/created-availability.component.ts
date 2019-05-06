@@ -10,20 +10,24 @@ import { Observable } from 'rxjs';
 })
 export class CreatedAvailabilityComponent implements OnInit, OnDestroy {
 
-  availability: any[];
+  open = false;
+  availability: SessionOuverte[];
   availabilityObserver;
   constructor( private adminService: AdminService) { }
 
+
+
   ngOnInit() {
+    this.adminService.getavailabilityList();
     this.availabilityObserver = this.adminService.availabilityListEmitter.subscribe(data => {
       this.availability = data;
     });
-    console.log('ave',  this.availability);
 
   }
 
-  coucou(item) {
-    console.log(item);
+  createSession(item) {
+      console.log('click ', open);
+      this.open = !this.open;
   }
 
   ngOnDestroy(): void {

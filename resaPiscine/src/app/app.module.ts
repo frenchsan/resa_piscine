@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,7 +13,12 @@ import { LoginComponent } from './login/login.component';
 import { AvailabilityComponent } from './staff/availability/availability.component';
 import { FormsModule } from '@angular/forms';
 import { CreatedAvailabilityComponent } from './staff/created-availability/created-availability.component';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+import { CreateSessionComponent } from './create-session/create-session.component';
+import { ReservationComponent } from './user/reservation/reservation.component';
 
+registerLocaleData(localeFr, 'fr');
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -27,7 +32,9 @@ export function tokenGetter() {
     ReservationDetailComponent,
     LoginComponent,
     AvailabilityComponent,
-    CreatedAvailabilityComponent
+    CreatedAvailabilityComponent,
+    CreateSessionComponent,
+    ReservationComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +50,9 @@ export function tokenGetter() {
     CustomMaterialModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'fr-FR' }, // replace "en-US" with your locale
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

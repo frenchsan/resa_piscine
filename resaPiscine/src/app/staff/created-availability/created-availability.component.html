@@ -1,7 +1,14 @@
-<div *ngFor="let item of availability" (click)="coucou(item)">
-  {{item.id}}
-  {{item.creator}}
-  {{item.hour_start}}
-  {{item.hour_end}}
-  {{item.total_duration}}
+<div *ngFor="let reservation of availability">
+  <div *ngIf="reservation.room.available">
+    Libre !!!
+  </div>
+    <mat-card>
+      date début: {{reservation.hour_start | date:'short'}}
+      <!-- date fin :{{reservation.hour_end | date:'short'}} -->
+      Durée : {{reservation.total_duration}}
+      id: {{reservation.id}}
+      room id : {{reservation.room.id}}
+      disponible: {{reservation.room.available}}
+    </mat-card>
+
 </div>
