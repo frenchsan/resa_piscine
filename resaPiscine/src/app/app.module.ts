@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyNavComponent } from './my-nav/my-nav.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReservationListComponent } from './reservation-list/reservation-list.component';
 import { ReservationDetailComponent } from './reservation-detail/reservation-detail.component';
 import { CustomMaterialModule } from './shared/custom-material/custom-material.module';
@@ -17,6 +17,14 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { CreateSessionComponent } from './create-session/create-session.component';
 import { ReservationComponent } from './user/reservation/reservation.component';
+import { DoReservationComponent } from './user/do-reservation/do-reservation.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { LoadingInterceptorService } from './shared/loading-interceptor.service';
+import { SpinnerDuringRequestDirective } from './shared/spinner-during-request.directive';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -34,7 +42,13 @@ export function tokenGetter() {
     AvailabilityComponent,
     CreatedAvailabilityComponent,
     CreateSessionComponent,
-    ReservationComponent
+    ReservationComponent,
+    DoReservationComponent,
+    SpinnerDuringRequestDirective,
+    SpinnerComponent,
+  ],
+  entryComponents : [
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -48,10 +62,23 @@ export function tokenGetter() {
     AppRoutingModule,
     BrowserAnimationsModule,
     CustomMaterialModule,
-    FormsModule
+    FormsModule,
+    ScrollingModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    FlexLayoutModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR' }, // replace "en-US" with your locale
+    {
+      provide: HTTP_INTERCEPTORS,
+        useClass: LoadingInterceptorService,
+        multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

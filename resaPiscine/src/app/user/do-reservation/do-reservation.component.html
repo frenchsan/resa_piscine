@@ -1,0 +1,50 @@
+<mat-card >
+  <mat-card-content [className]="session.is_free ? 'active' : 'inactive'">
+  <h4>
+    {{session.hour_start | date :'short'}}
+  </h4>
+  Equipe {{index+1}}
+  <div *ngIf="session.is_free;else elseBlock">
+      <mat-divider [inset]="true"></mat-divider>
+   <div class="textcenter">
+     nombre de joueurs:
+   </div>
+    <form class="example-form" [formGroup]="profileForm" (ngSubmit) ="createSession()">
+
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" formControlName = "numberOfplayersFormControl" required>
+        <mat-button-toggle value="4">4</mat-button-toggle>
+        <mat-button-toggle value="5">5</mat-button-toggle>
+        <mat-button-toggle value="6">6</mat-button-toggle>
+      </mat-button-toggle-group>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Email"  formControlName ="emailFormControl"
+                   [errorStateMatcher]="matcher" required>
+            <!-- <mat-error *ngIf="profileForm.value.emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="profileForm.value.emailFormControl.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error> -->
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Nom"  formControlName ="lastnameFormControl" required >
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Prenom"  formControlName ="firstnameFormControl" required>
+          </mat-form-field>
+
+          <button type="submit" mat-raised-button color="primary" [disabled]="!profileForm.valid" (click)="createSession()">Réserver</button>
+        </form>
+      </div>
+      <ng-template #elseBlock>
+        <div>
+            Complet
+      </div>
+    </ng-template>
+  </mat-card-content>
+  <mat-card-footer>
+
+  </mat-card-footer>
+</mat-card>

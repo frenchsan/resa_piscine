@@ -1,0 +1,32 @@
+mat-card {
+  width: 300px;
+
+}
+mat-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+}
+
+.inactive {
+  padding:5px;
+  background-color: rgb(161, 161, 161);
+}
+
+h4 {
+  margin: 2px;
+}
+
+.textcenter {
+  margin-top: 5px;
+  text-align: center;
+}

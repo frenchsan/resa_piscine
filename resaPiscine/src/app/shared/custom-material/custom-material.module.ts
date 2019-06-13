@@ -9,7 +9,10 @@ import { MatDatepickerModule,
   MatCardModule,
   MatFormFieldModule,
   MatNativeDateModule,
-  MatInputModule} from '@angular/material';
+  MatInputModule,
+  MatButtonToggleModule,
+  MatDividerModule,
+  MatProgressSpinnerModule} from '@angular/material';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -29,7 +32,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     ReactiveFormsModule,
     MatMomentDateModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonToggleModule,
+    MatListModule,
+    MatDividerModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     CommonModule,
@@ -44,7 +51,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     ReactiveFormsModule,
     MatMomentDateModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonToggleModule,
+    MatListModule,
+    MatDividerModule,
+    MatProgressSpinnerModule,
   ]
 })
 export class CustomMaterialModule { }
